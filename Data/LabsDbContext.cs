@@ -11,6 +11,7 @@ namespace Labs.Waters.API.Data
         }
 
         public DbSet<Register>  Register { get; set; }
+        public DbSet<Login> Login { get; set; }
 
     }
 }
