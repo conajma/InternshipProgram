@@ -34,7 +34,7 @@ namespace Labs.Waters.API.Repository.Implementations
 
         public async Task DeleteRegisteredUser(int id)
         {
-            var user = labsDbContext.Register.Where(u => u.Id == id);
+            var user = await labsDbContext.Register.FirstOrDefaultAsync(u => u.Id == id);
             if (user != null)
             {
                 labsDbContext.Remove(user);

@@ -45,7 +45,7 @@ namespace Labs.Waters.API.Controllers
             return Created("getuserbyid", user);
         }
 
-        [HttpDelete("deleteuser", Name = "deleteuser")]
+        [HttpDelete("{id}", Name = "deleteuser")]
         public async Task<IActionResult> DeleteUser(int id)
         {
             if (id <= 0)
