@@ -17,7 +17,7 @@ builder.Services.AddDbContext<LabsDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("LabsConnectionString"));
 });
-
+builder.Services.AddCors();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -30,6 +30,11 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseCors(options =>
+{
+    options.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin();
+});
 
 app.MapControllers();
 
