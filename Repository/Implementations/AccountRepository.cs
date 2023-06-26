@@ -17,6 +17,10 @@ namespace Labs.Waters.API.Repository.Implementations
         public async Task<string> LoginUser(Login login)
         {
             var user = await labsDbContext.Register.FirstOrDefaultAsync(f => f.Email == login.Email);
+            if(user == null)
+            {
+                return "NotFound";
+            }
             if (user.Email == login.Email && user.Password == login.Password)
             {
                 return login.Email;
